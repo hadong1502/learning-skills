@@ -21,7 +21,7 @@ learning-skills venv (Marker), which it locates next to this repo.
     learnctl.py quiz record Q007 --score 0.6 --confidence 4 [--rating 1-4] --notes N
     learnctl.py log --kind K --text T
     learnctl.py render                        # regenerate index.md
-    learnctl.py status
+    learnctl.py status                        # .learn/ignore: glob patterns of files to skip (e.g. psets/*_figs/)
     learnctl.py course set [--title T] [--policy P] | show
     learnctl.py page SOURCE N [N ...]        # render original pages to PNG (.learn/cache/pages/)
     learnctl.py audit                         # flag pages where conversion dropped minus signs
@@ -31,6 +31,7 @@ folder (or any subfolder), or pass --root.
 """
 
 import argparse
+import fnmatch
 import datetime as dt
 import hashlib
 import json
@@ -138,14 +139,30 @@ def unit_order(course):
 
 
 # ---------------------------------------------------------------- sources
+def ignore_patterns(root):
+    """Glob patterns (one per line, # comments) in .learn/ignore, matched against posix rel paths.
+    A pattern ending in / ignores everything below that folder."""
+    f = Path(root) / ".learn" / "ignore"
+    if not f.exists():
+        return []
+    pats = [ln.strip() for ln in f.read_text(encoding="utf-8").splitlines()]
+    return [p if not p.endswith("/") else p + "*" for p in pats if p and not p.startswith("#")]
+
+
+def is_ignored(rel, pats):
+    return any(fnmatch.fnmatch(rel, p) for p in pats)
+
+
 def discover(root):
+    pats = ignore_patterns(root)
     out = []
     for dirpath, dirnames, filenames in os.walk(root):
         dirnames[:] = [d for d in dirnames if d not in SKIP_DIRS and not d.startswith(".")]
         for fn in filenames:
             p = Path(dirpath) / fn
-            if p.suffix.lower() in SOURCE_EXTS:
-                out.append(p.relative_to(root).as_posix())
+            rel = p.relative_to(root).as_posix()
+            if p.suffix.lower() in SOURCE_EXTS and not is_ignored(rel, pats):
+                out.append(rel)
     return sorted(out)
 
 
@@ -162,7 +179,15 @@ def adopt_finished(st, rel):
 
 
 def scan(st):
-    man = st.get("manifest")["sources"]
+    manifest = st.get("manifest")
+    pats = ignore_patterns(st.root)
+    dropped = [r for r in manifest["sources"] if is_ignored(r, pats)]
+    if dropped:  # newly ignored: forget them (converted text stays in .learn/sources, unused)
+        for r in dropped:
+            del manifest["sources"][r]
+        st.put("manifest", manifest)
+        st.log("ignore", "dropped from manifest: " + ", ".join(dropped))
+    man = manifest["sources"]
     found = discover(st.root)
     res = {"new": [], "changed": [], "removed": [], "unconverted": [], "unchanged": []}
     for rel in found:

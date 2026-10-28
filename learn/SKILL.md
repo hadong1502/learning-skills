@@ -95,6 +95,7 @@ generated with `$L render`. `log.md` is written with `$L log`.
   - a new unit at the right `--order`.
 - Extract concepts for the new or changed material only, then run `$L render` and log.
 - **Removed sources:** say so. Don't delete concepts silently; ask.
+- **Generated files** (figure PDFs, build output) are not course material. Before converting, add glob patterns to `.learn/ignore`, e.g. `psets/*_figs/`. Ignored files are skipped and dropped from the manifest.
 
 ## 3. Answering a question
 
