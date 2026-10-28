@@ -1,0 +1,87 @@
+{
+ "about": "Adaptation evals for the learn skill on the 9.49 neural_circuit course. Each case is one /learn call in a fresh sandbox copy of .learn. Pairs share a topic and differ in phrasing, so depth/format should differ. Graded by the rubric; see run notes in evals/results/.",
+ "course": "H:/My Drive/study/neural_circuit",
+ "cases": [
+  {
+   "id": "A1",
+   "pair": "A",
+   "position": "L13",
+   "signal": "precise, names the stuck point",
+   "question": "In L08 the mixed fixed point of the reciprocal-inhibition WTA is a saddle. I get the eigenvalues -1±w from the Jacobian, but why exactly is the diagonal x1 = x2 its stable manifold, rather than some curved separatrix?",
+   "expect": [
+    "answers the exact point directly: exchange symmetry makes x1=x2 invariant, and in the both-active region the dynamics are linear, so the stable eigenvector (1,1) spans a straight invariant line",
+    "does NOT re-teach nullclines, eigenvalues or WTA basics",
+    "short (a few paragraphs at most)",
+    "cites L08 (p.8-10)",
+    "math correct: Jacobian -I + [[0,-w],[-w,0]] has eigenvalue -1-w along (1,1) (stable) and w-1 along (1,-1) (unstable for w>1)"
+   ]
+  },
+  {
+   "id": "A2",
+   "pair": "A",
+   "position": "L13",
+   "signal": "broad, level unclear",
+   "question": "I don't get the winner-take-all slide.",
+   "expect": [
+    "either one probe question or a short layered answer ending in one probe; at most ONE question",
+    "intuition first then the formal model (profile: math = intuition AND formal)",
+    "uses the course model x1' = -x1 + [-w x2 + b1]_+ and cites L08 p.6-9",
+    "bridges to neuroscience (owl competitor suppression / decision-making) since that is the learner's strength",
+    "does not dump the full Lyapunov/Hopfield material"
+   ]
+  },
+  {
+   "id": "B1",
+   "pair": "B",
+   "position": "L13",
+   "signal": "false presupposition",
+   "question": "Since all the eigenvalues of W have real part below 1, the network can't amplify its inputs, right? So non-normal amplification must need an unstable mode somewhere.",
+   "expect": [
+    "corrects the premise FIRST and plainly: stable non-normal networks transiently amplify (or with input, have large steady gain) without any unstable mode",
+    "gives the mechanism: hidden feedforward structure via Schur form / non-orthogonal eigenvectors (L10)",
+    "a concrete example, ideally the 2-cell E-I or the practice-exam W2 with r1 exceeding 1",
+    "records a misconception (misc add) in the sandbox",
+    "cites L10 and/or the practice exam"
+   ]
+  },
+  {
+   "id": "B2",
+   "pair": "B",
+   "position": "L13",
+   "signal": "precise, technical",
+   "question": "For W = [[w, -kw], [w, -kw]] in the non-normal lecture, where exactly does the feedforward weight w_ff = w(1+k) come from in the Schur form?",
+   "expect": [
+    "direct derivation in the sum/difference (or Schur) basis: eigenvalues 0 and w(1-k), the off-diagonal Schur entry w(1+k)",
+    "math verified (SymPy or explicit algebra), no errors",
+    "concise; no re-teaching of what non-normality is",
+    "cites L10 NN p.12-17"
+   ]
+  },
+  {
+   "id": "C1",
+   "pair": "C",
+   "position": "L05",
+   "signal": "asks about material beyond the current position",
+   "question": "How does the line attractor relate to the balanced state?",
+   "expect": [
+    "notices the balanced state is introduced later (L09) than the current position (L05) and says so explicitly",
+    "answers with the minimum preview needed, framed as later material",
+    "anchors in what is in scope (L03-L05 line attractor, fine tuning)",
+    "does not silently use L09/L10 machinery as if known"
+   ]
+  },
+  {
+   "id": "C2",
+   "pair": "C",
+   "position": "L13",
+   "signal": "correct vocabulary, asks for intuition (rusty math)",
+   "question": "What's the intuition for why the Fisher information of a Poisson neuron is f'^2/f?",
+   "expect": [
+    "intuition AND formal per profile: signal slope f' vs Poisson noise variance f (variance = mean), J = slope^2 / variance",
+    "short derivation or pointer to it (L02 p.7, P1 problem 1)",
+    "peak-of-tuning-curve consequence (J=0 at the peak)",
+    "moderate length; does not assume fluent probability"
+   ]
+  }
+ ]
+}

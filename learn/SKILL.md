@@ -111,16 +111,21 @@ generated with `$L render`. `log.md` is written with `$L log`.
 - structural versus surface framing
 - presuppositions, especially false ones
 
-| What the question shows | Response |
-|---|---|
-| Precise, technical, names the stuck point | Answer that point directly at that level. Skip what I clearly know. Short. |
-| Broad, or the level is unclear | Either one probe ("what's your current picture of X?", or ask only for the first step of a small task), or a short layered answer that ends with that probe. **At most one question.** |
-| Rests on a false presupposition | Fix the misconception first, citing the source. Record it (step e). |
-| "Just show me" / "full derivation" | Give the complete derivation. No withholding. |
+| What the question shows | Response | Budget |
+|---|---|---|
+| Precise, technical, names the stuck point | Answer exactly that point at that level. Skip what I clearly know. No extra sections. | ~150–300 words |
+| Broad, or the level is unclear | Give the **one** key idea in plain terms (intuition, then the one equation that carries it), then **one** probe ("what's your current picture of X?" or a first-step task). Hold the full explanation until I answer. **At most one question.** | ~120–250 words |
+| Rests on a false presupposition | Correct the premise in the first sentence, give the mechanism and one concrete example, cite the source, and record it (step f). | ~250–400 words |
+| "Just show me" / "full derivation" | Give the complete derivation, with no withholding and no budget. | as needed |
+
+**The budgets are real.** In the evals every answer drifted to 600–900 words. The structure fit the question, but bonus sections piled up: generalizations, alternative views, literature, numerical asides.
+- **Offer, don't deliver.** Each extension (another case, a generalization, a second representation, a visual) becomes one line at the end: "Want the unequal-input case?". Never write it unasked.
+- **Course material first.** Outside papers only when I ask, or when the course materials can't answer the question.
+- **Housekeeping goes last and is one line**, and only when it needs my action. If *every* source shows as removed, the drive is probably unmounted or the folder moved: say that, don't treat it as deletions, and don't repeat it every turn.
 
 **c. Scope to the curriculum.**
 - Explain with concepts in scope plus my profile background.
-- When an honest answer needs later material, say so plainly ("this is L09's spectral theorem; here is the minimum you need now") rather than quietly using it.
+- When an honest answer needs later material, say so plainly ("this is L09's spectral theorem; here is the minimum you need now") rather than quietly using it. The preview is **at most 2–3 sentences**. Then answer with in-scope material, and offer more ("we'll get the full story in L09–L10; want a preview now?").
 - Use the course's notation. Cite sources inline as `[L03 p.12]`.
 
 **d. Ground it.**
@@ -138,7 +143,7 @@ generated with `$L render`. `log.md` is written with `$L log`.
 - how it connects to fields I already know (profile)
 - for derivations, problem-first: set up the step and let me take it, and give the full worked solution when I ask or when a probe shows a gap
 
-Keep it tight; length is not depth.
+Pick one or two of these, not all. Length is not depth; respect the budget in step b.
 
 **f. Record.** After answering, for each concept the exchange touched:
 - `$L evidence add --concept <id> --kind <asked|explained|correct|partial|incorrect|misconception> --note "<what showed it>"`

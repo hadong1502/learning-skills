@@ -347,7 +347,30 @@ A large course might need a subagent per unit so the main context stays clean.
 - WebP `method=6` is too slow; use 4.
 - The browser pane only shows local HTML as a static snapshot; serve it over HTTP to test.
 
-## 7. Open questions (original)
+## 7. Phase 4 (done 2026-10-27)
+
+**Profile** (`~/.claude/learning/profile.md`):
+- Neuroscience PhD student, strongest in neuroscience. Dynamical systems, linear algebra and probability/information theory are college-level but rusty.
+- Math: intuition AND formal. Biology: formal first. Length: judged per question.
+- The skills no longer assume an "expert researcher"; they defer to the profile.
+
+**Hooks** (in `~/.claude/settings.json`, script `learn/scripts/learn_hooks.py`):
+- SessionStart prints a one-line course status when the working directory is in a course.
+- PreToolUse(Write|Edit) denies hand edits of `.learn/*.json`; `.learn/tmp/` is allowed. Verified live.
+
+**Cleanups:**
+- forward and duplicate `uses` references fixed
+- git repo created
+- the subagent-report hook now keeps paths inside `CLAUDE_PROJECT_DIR` with the project, not a nested repo
+
+**Evals** (`evals/learn_cases.json`, `make_sandboxes.py`, `results/`):
+- Six cases, three phrasing pairs, in sandboxes.
+- Round 1: everything held except length, which ran 551–687 words for every route.
+- Fix: word budgets per route, "offer, don't deliver", course material first, previews limited to 2–3 sentences.
+- Round 2: A2 went from 654 to 245 words and B2 from 587 to 294, with quality intact.
+- A1, B1, C1 and C2 are still to re-run after the next skill change.
+
+## 8. Open questions (original)
 
 1. **PDF conversion backend.** Choose one:
    - **(a)** Marker or MinerU run locally: best math, but a heavy PyTorch install, and much faster with an NVIDIA GPU. Do you have one?
