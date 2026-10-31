@@ -19,7 +19,7 @@ Developed and tested on Windows 11 with an 8 GB RTX 4070. Most of it is plain Py
 - **The state script** `learn/scripts/learnctl.py` uses only the standard library, so any `python` on PATH works.
 - **Optional:**
   - **Microsoft PowerPoint**, to convert `.pptx` decks.
-  - **For `visualize`:** a ManimGL 1.7.2 workspace. It needs its own `.venv` with `manimgl` and Pillow, a `common.py` providing `txt()` and `tex()`, and `.claude/skills/manimgl/` from [manimgl-skill](https://github.com/do-gongil/manimgl-skill), whose `core/assets/snapshot.py` drives the beats mode.
+  - **For `visualize`:** the ManimGL 1.7.2 workspace at [hadong1502/manim-workspace](https://github.com/hadong1502/manim-workspace). Clone it, run `uv sync` there, and point `MANIM_WORKSPACE` at it. It provides `common.py` (`txt()`, `tex()`) and the `snapshot.py` that drives the beats mode.
 
 ## Install
 
