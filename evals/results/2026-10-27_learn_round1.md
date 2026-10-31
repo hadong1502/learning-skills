@@ -3,7 +3,7 @@
 **Setup.**
 - Cases: `evals/learn_cases.json`, three pairs of one topic asked two ways (precise vs broad, false premise vs precise, out of scope vs intuition).
 - Each case ran in its own sandbox copy of the neural_circuit `.learn`, as an independent subagent invoking `/learn`.
-- Replies are in `round1/`. Agent reports are in `S:/coding_support/claude_skills/.claude/agent-reports/2026-10-27_eval-learn-*.md`.
+- The replies (`round1/`, `round2/`) and agent reports are kept locally, not in the public repo, because they quote course material.
 - Grading was done by the parent session against each case's `expect` list. The numbers were spot-checked independently with SymPy and NumPy: A1 eigenpairs; B1 peak ‖δs‖ = 2.01, gain 10/3, λmax(sym) = 4.10; B2 Schur form; C1 left eigenvector and kick shift (w_E+w_I)ε; C2 peak at √2σ.
 
 | Case | Signal | Words | Passed | Missed |

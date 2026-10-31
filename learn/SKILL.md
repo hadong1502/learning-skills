@@ -131,7 +131,7 @@ generated with `$L render`. `log.md` is written with `$L log`.
 
 **d. Ground it.**
 - **Don't state derivations or numbers you haven't checked.** For non-trivial algebra, calculus, linear algebra or numerics, verify with SymPy or NumPy:
-  `"S:/coding_support/claude_skills/learning-skills/.venv/Scripts/python.exe" -c "…"`.
+  `"$LEARN_PY" -c "…"` (`LEARN_PY` is this repo's venv python; see README).
 - When I push back, re-derive before agreeing. My confidence isn't evidence, and neither is yours.
 - If a formula in a converted source looks garbled or suspicious, look at the original page. Run `$L page <source rel path> <N>`, then Read the PNG; this works for `.pptx` too, via the cached PDF. The Read tool can't open some PDFs directly.
 - **Known OCR weak spot: minus signs.** Marker drops them both between symbols (`w_E - w_I` → `w_E w_I`) and inside small vectors and matrices. Whenever `context` prints `CHECK PAGE IMAGE`, or a sign matters to the argument, check the page image before using a converted formula. `$L audit` can't see drops in PowerPoint exports or in scanned or handwritten PDFs, so be equally careful there.

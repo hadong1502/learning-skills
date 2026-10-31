@@ -2,7 +2,7 @@
 
 Run with the ManimGL workspace interpreter, from anywhere:
 
-    PYM=S:/coding_support/claude_skills/manim-workspace/.venv/Scripts/python.exe
+    PYM=$MANIM_WORKSPACE/.venv/Scripts/python.exe
     $PYM viz.py beats  slug.py SceneName --out DIR [--hd] [--title T] [--description D]
     $PYM viz.py sweep  slug.py SceneName --out DIR [--quality l|m] [--hd] [--n 60] [--title T] [--description D]
     $PYM viz.py viewer DIR [--title T] [--description D]      # rebuild viewer.html from DIR/frames.json
@@ -32,7 +32,9 @@ import tempfile
 import time
 from pathlib import Path
 
-WORKSPACE = Path(os.environ.get("MANIM_WORKSPACE", "S:/coding_support/claude_skills/manim-workspace"))
+if not os.environ.get("MANIM_WORKSPACE"):
+    sys.exit("set MANIM_WORKSPACE to the ManimGL workspace root (see README)")
+WORKSPACE = Path(os.environ["MANIM_WORKSPACE"])
 SNAPSHOT = WORKSPACE / ".claude/skills/manimgl/core/assets/snapshot.py"
 CDN = "https://cdnjs.cloudflare.com/ajax/libs"
 

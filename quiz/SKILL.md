@@ -22,7 +22,7 @@ Course state is shared with the `learn` skill.
 
 ```bash
 L="python -I $HOME/.claude/skills/learn/scripts/learnctl.py"
-PY="S:/coding_support/claude_skills/learning-skills/.venv/Scripts/python.exe"   # SymPy / NumPy
+PY="$LEARN_PY"   # this repo's venv: SymPy / NumPy (see README)
 ```
 
 All state writes go through `$L`; never edit `.learn/*.json` by hand.

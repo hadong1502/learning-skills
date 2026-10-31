@@ -19,7 +19,7 @@ values. Keep each visual to one idea.
 
 ```bash
 L="python -I $HOME/.claude/skills/learn/scripts/learnctl.py"
-PYM="S:/coding_support/claude_skills/manim-workspace/.venv/Scripts/python.exe"   # ManimGL 1.7.2 + Pillow
+PYM="$MANIM_WORKSPACE/.venv/Scripts/python.exe"   # ManimGL 1.7.2 + Pillow (see README)
 VIZ="$HOME/.claude/skills/visualize/scripts/viz.py"
 ```
 
@@ -45,7 +45,7 @@ When unsure, ask in one line. Say which mode you picked and why in one line.
 ## 3a. ManimGL scenes (beats, slider)
 
 The engine is **ManimGL** (`from manimlib import *`), **never Manim CE**.
-- Read `S:/coding_support/claude_skills/manim-workspace/.claude/skills/manimgl/SKILL.md` for the API before writing a scene.
+- Read `$MANIM_WORKSPACE/.claude/skills/manimgl/SKILL.md` for the API before writing a scene.
 - `from common import *` gives `txt()` (Pango text) and `tex()` (LaTeX with amsmath).
 
 **Conventions** (each one cost a re-render):
